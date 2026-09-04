@@ -1,56 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | My Game Dev Journey</title>
+    <title>鈴木斗和 - 自己紹介</title>
     <style>
-        /* A little bit of styling to make it look clean */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #e0e0e0; min-height: 100vh; display: flex;
+            justify-content: center; align-items: flex-start; padding: 20px;
+            background-color: #0a0000; overflow: auto;
+            background-image: radial-gradient(circle at 20% 30%, rgba(200, 0, 0, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(150, 0, 0, 0.06) 0%, transparent 50%), repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(180, 0, 0, 0.1) 2px, rgba(180, 0, 0, 0.1) 4px), repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(180, 0, 0, 0.1) 2px, rgba(180, 0, 0, 0.1) 4px);
+            position: relative;
         }
-        
-        h1 { color: orange; }
-        h2 { color: #b206a3; border-bottom: 2px solid #34495e; padding-bottom: 5px; }
-        .skills-list { display: flex; gap: 10px; list-style: none; padding: 0; }
-        .skills-list li { background: #34495e; color: #fff; padding: 5px 10px; border-radius: 5px; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle, rgba(180, 0, 0, 0.15) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 0; }
+        body::after { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(180, 0, 0, 0.04) 3px, rgba(180, 0, 0, 0.04) 4px); pointer-events: none; z-index: 0; animation: scanline 8s linear infinite; }
+        @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+        .container { position: relative; z-index: 1; max-width: 1100px; width: 100%; background: rgba(10, 0, 0, 0.7); border-radius: 20px; padding: 50px 40px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), inset 0 0 80px rgba(180, 0, 0, 0.08); border: 1px solid rgba(180, 0, 0, 0.4); }
+        h1 { text-align: center; font-size: 2.8em; margin-bottom: 5px; color: #e53935; letter-spacing: 4px; text-shadow: 0 0 10px rgba(200, 0, 0, 0.8), 0 0 20px rgba(200, 0, 0, 0.5), 0 0 50px rgba(200, 0, 0, 0.3); font-family: 'Consolas', 'Courier New', monospace; animation: glow 2s ease-in-out infinite alternate; }
+        @keyframes glow { from { text-shadow: 0 0 10px rgba(200, 0, 0, 0.8), 0 0 20px rgba(200, 0, 0, 0.5), 0 0 50px rgba(200, 0, 0, 0.3); } to { text-shadow: 0 0 20px rgba(220, 0, 0, 1), 0 0 40px rgba(220, 0, 0, 0.7), 0 0 80px rgba(220, 0, 0, 0.4); } }
+        .subtitle { text-align: center; font-size: 1.1em; color: #999; margin-bottom: 40px; border-bottom: 1px solid rgba(180, 0, 0, 0.3); padding-bottom: 25px; }
+        .section { margin-bottom: 35px; }
+        .section-title { font-size: 1.3em; color: #e53935; margin-bottom: 12px; padding-left: 10px; border-left: 4px solid #e53935; text-shadow: 0 0 8px rgba(200, 0, 0, 0.5); font-family: 'Consolas', 'Courier New', monospace; }
+        .hobby-item { padding: 10px 15px; margin-bottom: 4px; background: rgba(180, 0, 0, 0.08); border: 1px solid rgba(180, 0, 0, 0.3); border-radius: 10px; font-size: 1.1em; transition: all 0.3s ease; font-family: 'Consolas', 'Courier New', monospace; cursor: pointer; display: flex; align-items: center; }
+        .hobby-item::before { content: "► "; color: #e53935; font-size: 0.9em; margin-right: 8px; }
+        .hobby-item:hover { background: rgba(180, 0, 0, 0.2); border-color: rgba(180, 0, 0, 0.5); transform: translateX(5px); }
+        .details-panel { background: rgba(0, 0, 0, 0.7); border: 1px solid rgba(180, 0, 0, 0.5); border-radius: 8px; padding: 12px 16px; margin-top: 8px; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.9em; color: #ffcccc; }
+        .hidden { display: none !important; }
+        .clip-section { margin-top: 35px; }
+        .clip-triangle { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 12px; }
+        .clip-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .clip-card:only-child { width: 90%; min-width: 500px; max-width: 800px; }
+        .clip-card { display: flex; flex-direction: column; align-items: center; width: 48%; min-width: 400px; max-width: 700px; }
+        .clip-card .clip-video { width: 100%; height: 550px; margin-top: 6px; border: 1px solid rgba(180,0,0,0.5); box-shadow: 0 0 25px rgba(180,0,0,0.4); border-radius: 12px; }
+        .clip-card .clip-label { font-family: 'Consolas', 'Courier New', monospace; color: #e53935; font-size: 0.9em; text-shadow: 0 0 8px rgba(180,0,0,0.5); text-align: center; }
+        footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(180, 0, 0, 0.4); color: #e53935; font-size: 0.9em; font-family: 'Consolas', 'Courier New', monospace; text-shadow: 0 0 5px rgba(180, 0, 0, 0.5); }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Hello, aaaaagggggI'm [Nokk1y]</h1>
-        <p>Aspiring Game Developer & Programmer</p>
-    </header>
+    <div class="container">
+        <h1>鈴木斗和</h1>
+        <p class="subtitle">── PLAYER PROFILE ──</p>
 
-    <section>
-        <h2>About Me</h2>
-        <p>人生なとかなる</p>
-    </section>
+        <div class="section">
+            <h2 class="section-title">趣味と特技</h2>
+            <div class="hobby-wrapper">
+                <div class="hobby-item" onclick="toggleDetails('soccer')">サッカー</div>
+                <div id="soccer-details" class="details-panel hidden"><strong>ポジション:</strong> MF, SB</div>
+                <div class="hobby-item" onclick="toggleDetails('game')">ゲーム</div>
+                <div id="game-details" class="details-panel hidden"><strong>ゲーム:</strong> Valorant, Fortnite, VRChat, APEX, OW</div>
+                <div class="hobby-item" onclick="toggleDetails('music')">音楽を聴く</div>
+                <div id="music-details" class="details-panel hidden"><strong>Mrs.GREEN APPLE</strong></div>
+            </div>
+        </div>
 
-    <section>
-        <h2>Current Toolkit & Interests</h2>
-        <ul class="skills-list">
-            <li>C#</li>
-            <li>Unity</li>
-            <li>3D Modeling</li>
-             <li>Audio Production</li>
-        </ul>
-    </section>
+        <div class="section clip-section">
+            <h2 class="section-title">クリップ</h2>
+            <div class="clip-triangle">
+                <div class="clip-row">
+                    <div class="clip-card">
+                        <span class="clip-label">VALORANT</span>
+                        <video id="first-video" class="clip-video" src="C:/Users/Suzu_/OneDrive/clip/SteelSeries Moments/VALORANT__2024-08-12__15-14-42.mp4" loop muted autoplay playsinline></video>
+                    </div>
+                    <div class="clip-card">
+                        <span class="clip-label">Fortnite</span>
+                        <video id="third-video" class="clip-video" src="C:/Users/Suzu_/OneDrive/clip/フォートナイト__2025-10-29__00-30-50.mp4" loop muted autoplay playsinline></video>
+                    </div>
+                </div>
+                <div class="clip-row">
+                    <div class="clip-card">
+                        <span class="clip-label">スプラトゥーン３</span>
+                        <video id="second-video" class="clip-video" src="C:/Users/Suzu_/OneDrive/clip/obsclip/Replay 2026-01-29 23-50-56.mkv" loop muted autoplay playsinline></video>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <section>
-        <h2>What I'm Working On</h2>
-        <p>Mention a brief concept of a project you want to build or are currently brainstorming (like a cool sci-fi game, a platformer, or an RPG mechanical test!).</p>
-    </section>
-
-    <footer>
-        <p>© 2026 [Nokk1y]. Built from scratch.</p>
-    </footer>
-
+        <footer>
+            <p>── PRESS ANY KEY TO CONTINUE ──</p>
+        </footer>
+    </div>
+    <script>
+        function toggleDetails(type) {
+            const panels = { 'soccer': document.getElementById('soccer-details'), 'game': document.getElementById('game-details'), 'music': document.getElementById('music-details') };
+            panels[type].classList.toggle('hidden');
+        }
+        document.getElementById('first-video').addEventListener('loadedmetadata', function() { this.currentTime = 20; });
+        document.getElementById('second-video').addEventListener('loadedmetadata', function() { this.currentTime = 30; });
+        document.getElementById('third-video').addEventListener('loadedmetadata', function() { this.currentTime = 90; });
+    </script>
 </body>
 </html>
